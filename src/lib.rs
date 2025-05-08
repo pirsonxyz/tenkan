@@ -2,7 +2,6 @@ use std::{
     collections::HashMap,
     fs::{File, OpenOptions},
     io::{BufRead, BufReader, Error, Write},
-    path::Path,
 };
 
 pub const TENKAN_DEFAULT_HEADER: &'static str = "tenkan.h";
