@@ -1,0 +1,8 @@
+[package]
+name = "tenkan"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+facet = "0.18.5"
+facet-pretty = "0.22.0"
