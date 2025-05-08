@@ -8,3 +8,4 @@ tenkan <header name>
 tenkan <header name> <.env path>
 tenkan version || tenkan v #to show tenkan's current installed version
 ```
+tenkan's default file is tenkan.h 
