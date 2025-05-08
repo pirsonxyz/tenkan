@@ -2,7 +2,11 @@
 name = "tenkan"
 version = "0.1.0"
 edition = "2024"
+description = "Convert .env files to c headers"
+repository = "https://github.com/pirsonxyz/tenkan"
+authors = ["Pirson Bethancourt", "pirson@pirson.xyz"]
+keywords = [".env", "cli"]
+license = "MIT"
 
 [dependencies]
-facet = "0.18.5"
-facet-pretty = "0.22.0"
+

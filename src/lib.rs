@@ -1,6 +1,6 @@
 use std::{
     collections::HashMap,
-    fs::{File, OpenOptions, write},
+    fs::{File, OpenOptions},
     io::{BufRead, BufReader, Error, Write},
     path::Path,
 };
@@ -10,7 +10,10 @@ pub const ENV_FILE_DEFAULT_NAME: &'static str = ".env";
 
 /// This function exits if provided .env file is invalid!
 pub fn read_env_file<P: AsRef<Path>>(file_name: P) -> Result<HashMap<String, String>, Error> {
-    let f = File::open(file_name)?;
+    let f = File::open(file_name).unwrap_or_else(|_| {
+        eprintln!("⛔ Environment file could not be found, make sure it exits!",);
+        std::process::exit(1);
+    });
     let f = BufReader::new(f);
 
     let env_map = f
@@ -18,7 +21,7 @@ pub fn read_env_file<P: AsRef<Path>>(file_name: P) -> Result<HashMap<String, Str
         .map(|line| {
             let l = line.unwrap().trim().to_owned();
             let (key, value) = l.split_once('=').unwrap_or_else(|| {
-                eprintln!("Invalid env var, exiting...");
+                eprintln!("⛔ Invalid env var, exiting...");
                 std::process::exit(1);
             });
             Ok((key.to_owned(), value.to_owned()))
