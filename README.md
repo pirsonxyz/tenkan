@@ -6,4 +6,5 @@ because i'm doing embedded development and want to have a way to programmaticall
 tenkan 
 tenkan <header name>
 tenkan <header name> <.env path>
+tenkan version #to show tenkan's current installed version
 ```

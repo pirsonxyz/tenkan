@@ -26,7 +26,7 @@ pub fn read_env_file(file_name: &str) -> Result<HashMap<String, String>, Error> 
                 eprintln!("⛔ Invalid env var, exiting...");
                 std::process::exit(1);
             });
-            Ok((key.to_owned(), value.to_owned()))
+            Ok((key.trim().to_owned(), value.trim().to_owned()))
         })
         .collect();
 
@@ -37,7 +37,7 @@ pub fn create_c_file(file_name: &str, env_map: &HashMap<String, String>) -> Resu
     let mut f = OpenOptions::new()
         .write(true)
         .create(true)
-        .open(file_name)?;
+        .open(file_name.trim())?;
     for (key, value) in env_map {
         let env_var = format!("const char* {} = \"{}\";\n", key, value);
         f.write_all(env_var.as_bytes())?;
