@@ -6,6 +6,13 @@ use std::{
 
 pub const TENKAN_DEFAULT_HEADER: &'static str = "tenkan.h";
 pub const ENV_FILE_DEFAULT_NAME: &'static str = ".env";
+const HELP_MESSAGE: &'static str = r#"
+usage:
+
+tenkan 
+tenkan <header_name>
+tenkan <header_name> <.env_path>
+"#;
 
 /// This function exits if provided .env file is invalid!
 pub fn read_env_file(file_name: &str) -> Result<HashMap<String, String>, Error> {
@@ -43,4 +50,11 @@ pub fn create_c_file(file_name: &str, env_map: &HashMap<String, String>) -> Resu
         f.write_all(env_var.as_bytes())?;
     }
     Ok(())
+}
+
+pub fn print_version() {
+    println!("🛫 v{}", env!("CARGO_PKG_VERSION"));
+}
+pub fn print_help() {
+    print!("{}", HELP_MESSAGE);
 }

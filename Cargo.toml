@@ -1,6 +1,6 @@
 [package]
 name = "tenkan"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2024"
 description = "Convert .env files to c headers"
 repository = "https://github.com/pirsonxyz/tenkan"
