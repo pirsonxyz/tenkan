@@ -9,9 +9,12 @@ pub const TENKAN_DEFAULT_HEADER: &'static str = "tenkan.h";
 pub const ENV_FILE_DEFAULT_NAME: &'static str = ".env";
 
 /// This function exits if provided .env file is invalid!
-pub fn read_env_file<P: AsRef<Path>>(file_name: P) -> Result<HashMap<String, String>, Error> {
+pub fn read_env_file(file_name: &str) -> Result<HashMap<String, String>, Error> {
     let f = File::open(file_name).unwrap_or_else(|_| {
-        eprintln!("⛔ Environment file could not be found, make sure it exits!",);
+        eprintln!(
+            "⛔ Environment file {} could not be found, make sure it exits!",
+            file_name
+        );
         std::process::exit(1);
     });
     let f = BufReader::new(f);
@@ -31,10 +34,7 @@ pub fn read_env_file<P: AsRef<Path>>(file_name: P) -> Result<HashMap<String, Str
     env_map
 }
 /// Returns error if file creating or writing goes wrong
-pub fn create_c_file<P: AsRef<Path>>(
-    file_name: P,
-    env_map: &HashMap<String, String>,
-) -> Result<(), Error> {
+pub fn create_c_file(file_name: &str, env_map: &HashMap<String, String>) -> Result<(), Error> {
     let mut f = OpenOptions::new()
         .write(true)
         .create(true)
