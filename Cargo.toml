@@ -5,7 +5,7 @@ edition = "2024"
 description = "Convert .env files to c headers"
 repository = "https://github.com/pirsonxyz/tenkan"
 authors = ["Pirson Bethancourt", "pirson@pirson.xyz"]
-keywords = [".env", "cli"]
+keywords = ["c", "embedded", "cpp"]
 license = "MIT"
 
 [dependencies]
