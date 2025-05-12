@@ -1,6 +1,6 @@
 # Convert your .env files to c headers!
 ## why?
-because i'm doing embedded development and want to have a way to programmatically use environment variables
+because i'm doing embedded development and want to have a way to programmatically use environment variables without having to manually write them
 ## usage
 ```
 tenkan 
