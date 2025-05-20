@@ -62,7 +62,6 @@ pub fn create_c_file(file_name: &str, env_map: &HashMap<String, String>) -> Resu
 pub fn print_version() {
     println!("🛫 v{}", env!("CARGO_PKG_VERSION"));
 }
-/// Help message needs help
 pub fn print_help() {
     print!("{}", HELP_MESSAGE);
 }
